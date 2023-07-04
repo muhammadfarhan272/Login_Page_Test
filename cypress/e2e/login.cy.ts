@@ -8,13 +8,16 @@ let product_page: Product_Page;
 let shoppingCart: ShoppingCart;
 
 describe('Login page', () => {
+  beforeEach(()=>{
+    cy.visit(Cypress.env("base_url"));
+  })
 
   login_page = new LoginPage();
   product_page = new Product_Page();
   shoppingCart = new ShoppingCart();
 
   it('login test case', () => {
-    cy.visit(Cypress.env("base_url"));
+    
     login_page.UserName("standard_user");
     login_page.typePassword("secret_sauce");
     login_page.clickLoginButton();
