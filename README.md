@@ -16,3 +16,7 @@
 -  Execute following command to install typescript
 
     <pre><code> npm install --save-dev typescript </code></pre>
+- Execute following command to open cypress dashboard
+    <pre><code>npx cypress open</code></pre>
+#Note: 
+- I am not adding cypress.env.json to gitignore for now. We can add it as we do not have any sensitive info apart from base url
