@@ -1,10 +1,10 @@
 ///<reference types="cypress"/>
-import { LoginPage } from "../loginDetail/loginpage/login_page.po";
-import { Product_Page } from "../loginDetail/ProductPage/Product_detail.po";
-import { ShoppingCart } from "../loginDetail/shoppingCart/Shopping_cart.po";
+import { LoginPage } from "../loginDetail/loginPage/loginPage.po";
+import { ProductPage } from "../loginDetail/ProductPage/ProductDetail.po";
+import { ShoppingCart } from "../loginDetail/shoppingCart/ShoppingCart.po";
 
-let login_page : LoginPage;
-let product_page: Product_Page;
+let loginPage : LoginPage;
+let productPage: ProductPage;
 let shoppingCart: ShoppingCart;
 
 describe('Login page', () => {
@@ -12,27 +12,27 @@ describe('Login page', () => {
     cy.visit(Cypress.env("base_url"));
   })
 
-  login_page = new LoginPage();
-  product_page = new Product_Page();
+  loginPage = new LoginPage();
+  productPage = new ProductPage();
   shoppingCart = new ShoppingCart();
 
   it('login test case', () => {
     
-    login_page.UserName("standard_user");
-    login_page.typePassword("secret_sauce");
-    login_page.clickLoginButton();
+    loginPage.typeUserName("standard_user");
+    loginPage.typePassword("secret_sauce");
+    loginPage.pressLoginButton();
     cy.log("Login page successfully ");
     cy.get(".title").should("have.text","Products");
 
-    product_page.clickProduct();
-    product_page.assertionForBackButton();
-    product_page.clickOnAddToCard();
+    productPage.clickProduct();
+    productPage.assertionForBackToProductsButton();
+    productPage.pressAddToCardButton();
 
     shoppingCart.clickOnShoppingCart();
     shoppingCart.isNameMatch();
     shoppingCart.isQuantityMatch();
-    shoppingCart.clickOnRemoveProduct();
-    shoppingCart.itemVarification();
+    shoppingCart.clickOnRemoveButton();
+    shoppingCart.ItemRemovalVerification();
 
   })
 })

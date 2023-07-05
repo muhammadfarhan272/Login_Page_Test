@@ -1,7 +1,7 @@
-import { I_Product_detail } from "./Product_detail.in";
-export class Product_Page{
+import { I_Product_detail } from "./ProductDetail.in";
+export class ProductPage{
     private product: string = "#item_1_title_link";
-    private backButon: string = '[data-test="back-to-products"]';
+    private backButton: string = '[data-test="back-to-products"]';
     private addToCardButton: string  = '[data-test="add-to-cart-sauce-labs-bolt-t-shirt"]'
     
 
@@ -11,10 +11,10 @@ export class Product_Page{
     clickProduct(){
         cy.get(this.product).click();
     }
-    assertionForBackButton(){
-        cy.get(this.backButon).should("have.text","Back to products")
+    assertionForBackToProductsButton(){
+        cy.get(this.backButton).should("have.text","Back to products")
     }
-    clickOnAddToCard(){
+    pressAddToCardButton(){
         cy.get(this.addToCardButton).click();
     }
     

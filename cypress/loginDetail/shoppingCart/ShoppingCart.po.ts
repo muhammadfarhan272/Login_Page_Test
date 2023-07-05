@@ -1,6 +1,6 @@
-import { Product_Page } from "../ProductPage/Product_detail.po";
-
-export class ShoppingCart extends Product_Page{
+import { ProductPage } from "../ProductPage/ProductDetail.po";
+import { IShoppingCart } from "./ShoppingCart.in";
+export class ShoppingCart extends ProductPage{
     private shoppingCart: string = '.shopping_cart_link';
     private cartProductName: string = '.inventory_item_name';
     private QuantityOfProduct: string = '.cart_quantity';
@@ -25,10 +25,10 @@ export class ShoppingCart extends Product_Page{
     isQuantityMatch(){
         cy.get(this.QuantityOfProduct).should("have.text","1");
     }
-    clickOnRemoveProduct(){
+    clickOnRemoveButton(){
         cy.get(this.RemoveItem).click();
     }
-    itemVarification(){
+    ItemRemovalVerification(){
         cy.get(this.RemoveItem).should('not.exist');
 
     }
